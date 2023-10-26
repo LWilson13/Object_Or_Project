@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 public class Main extends Application{
 
@@ -16,10 +17,13 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Space Game");
 
+        button =new Button();
+        button.setText("Click");
+
         StackPane layout = new StackPane();
         layout.getChildren().add(button);
 
-        Scene mainScene = new Scene(layout,750, 250);
+        Scene mainScene = new Scene(layout,500, 750);
         primaryStage.setScene(mainScene);
         primaryStage.show();
 

@@ -1,0 +1,7 @@
+ Go to Run > Edit Configurations > Main
+
+ In the field that contains the texts
+
+ --module-path "exFilePath/JavaFX/lib" --add-modules javafx.controls,javafx.fxml
+
+ replace the text within the quotes with the file path toe your javaFx folder titled "lib"
