@@ -4,4 +4,4 @@
 
  --module-path "exFilePath/JavaFX/lib" --add-modules javafx.controls,javafx.fxml
 
- replace the text within the quotes with the file path toe your javaFx folder titled "lib"
+ replace the text within the quotes with the file path to your javaFx folder titled "lib"

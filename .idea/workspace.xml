@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5f5df823-dc79-42fb-a75d-91433b93765a" name="Changes" comment="Simple window with button. Actually runs. Added instructions for running.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run Instructions" beforeDir="false" afterPath="$PROJECT_DIR$/Run Instructions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
