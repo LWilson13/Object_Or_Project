@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5df823-dc79-42fb-a75d-91433b93765a" name="Changes" comment="Created Placeholder main menu screen and a button that switches to a placeholder game screen">
+    <list default="true" id="5f5df823-dc79-42fb-a75d-91433b93765a" name="Changes" comment="Created ScreenSize class to hold x and y size of window. Added timer for meteor spawning.">
+      <change afterPath="$PROJECT_DIR$/AlertBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ScreenSize.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Meteor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Meteor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +101,7 @@
     <MESSAGE value="Simple window with button. Actually runs. Added instructions for running." />
     <MESSAGE value="Added Event Handler and used button for test." />
     <MESSAGE value="Created Placeholder main menu screen and a button that switches to a placeholder game screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Placeholder main menu screen and a button that switches to a placeholder game screen" />
+    <MESSAGE value="Created ScreenSize class to hold x and y size of window. Added timer for meteor spawning." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created ScreenSize class to hold x and y size of window. Added timer for meteor spawning." />
   </component>
 </project>
