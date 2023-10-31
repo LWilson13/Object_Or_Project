@@ -21,11 +21,11 @@ public class GameLogic {
                 @Override
                 public void run() {
                     Platform.runLater(() -> {
-                        ;
+
                         try {
                             main.MeteorSpawn();
                         } catch (Exception e) {
-                            System.out.println("Error");
+                            e.printStackTrace();
                         }
 
                     });

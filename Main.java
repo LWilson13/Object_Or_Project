@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -70,6 +72,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("Space Game");
         primaryStage.setScene(mainGame);
+        primaryStage.setResizable(false);
         primaryStage.show();
         menuTemplate.display("Main Menu", "Space Game", "Start", this);
 
@@ -78,7 +81,7 @@ public class Main extends Application {
     public void MeteorSpawn(){
         int numInWave = 1 + rand.nextInt(3);
         for(int i = 0; i <= numInWave; i++){
-            Circle meteor = spawner.SpawnWave();
+            ImageView meteor = spawner.SpawnWave();
             mainGameLayout.getChildren().add(meteor);
         }
     }
