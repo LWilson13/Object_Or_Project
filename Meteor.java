@@ -6,6 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
+import javax.swing.text.html.ImageView;
+import java.awt.*;
 import java.util.Random;
 
 public class Meteor {
@@ -16,12 +18,13 @@ public class Meteor {
     static Random rand = new Random();
     static TranslateTransition movement;
 
-public Circle SpawnWave(){
+public ImageView SpawnWave(){
 
         int xSpawn = rand.nextInt(ScreenSize.getX());
         int ySpawn = -1 * rand.nextInt(maxSpawnPosY) - 50;
         int radius = minRad + rand.nextInt(maxRad - minRad);
-        Circle meteor = new Circle(xSpawn, ySpawn,radius, Color.RED);
+        Image meteor = new Image("Asteroid_big.png");
+        ImageView meteor = new ImageView()
 
         movement = new TranslateTransition();
         movement.setNode(meteor);
