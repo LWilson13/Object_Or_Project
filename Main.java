@@ -1,7 +1,9 @@
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,23 +13,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main extends Application {
-
-    Scene mainMenu;
-    Scene mainGame;
-    Random rand = new Random();
-    AlertBox menuTemplate;
-    public AnchorPane mainGameLayout;
-    public Meteor spawner;
-
-    TranslateTransition meteorMovement;
+    GameScene gameScene = new GameScene();
+    PauseMenu pauseMenu = new PauseMenu();
+    GameLogic gameLogic;
 
     public static void main(String[] args) {
         launch(args);
@@ -36,57 +34,60 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        spawner = new Meteor();
-        menuTemplate = new AlertBox();
-
-     /*   //Main Menu Setup
-        Label mainMenuTitle = new Label("Space Game");
-        Button startButton = new Button("Start Game");
-        startButton.setOnAction(e -> primaryStage.setScene(mainGame));
-
-        AnchorPane mainMenuLayout = new AnchorPane();
-        AnchorPane.setTopAnchor(mainMenuTitle, 100.0);
-        AnchorPane.setLeftAnchor(mainMenuTitle, 200.0);
-        AnchorPane.setBottomAnchor(startButton, 250.0);
-        AnchorPane.setLeftAnchor(startButton, 200.0);
-
-        mainMenuLayout.getChildren().addAll(startButton, mainMenuTitle);
-        mainMenu = new Scene(mainMenuLayout, 500,750);
-    */
-
-        //Main Game Setup
-        Button pauseButton = new Button("Pause");
-        pauseButton.setOnAction(e -> menuTemplate.display("Pause Menu", "Paused", "Resume", this));
+        StartMenu startMenu = new StartMenu();
+        GameOverMenu gameOverMenu = new GameOverMenu();
 
 
-        mainGameLayout = new AnchorPane();
-        AnchorPane.setTopAnchor(pauseButton, 50.0);
-        AnchorPane.setLeftAnchor(pauseButton, 50.0);
-        mainGameLayout.getChildren().addAll(pauseButton);
-        mainGameLayout.setStyle("-fx-background-color: black;");
+        //Main menu button setup
+        Button startButton = startMenu.startButton;
+        Button startQuitGame = startMenu.quitButton;
+        startButton.setOnAction(e -> {
+            primaryStage.setScene(gameScene.scene);
+            CreateTimer();
+        });
+        startQuitGame.setOnAction(e -> Platform.exit());
 
 
-        
-        mainGame = new Scene(mainGameLayout,ScreenSize.getX(), ScreenSize.getY());
+        //Game Scene button setup
+        Button pauseButton = gameScene.pauseButton;
+        pauseButton.setOnAction(e ->{
+            primaryStage.setScene(pauseMenu.scene);
+            gameLogic.Pause();
+        });
+
+        //Pause Menu Button Setup
+        Button resumeButton = pauseMenu.resumeButton;
+        Button quitButton = pauseMenu.quitButton;
+        resumeButton.setOnAction(e-> {
+
+            primaryStage.setScene(gameScene.scene);
+            gameLogic.StartGameLoop();
+        });
+        quitButton.setOnAction(e-> Platform.exit());
+
+        //Game over button setup
+        Button restart = gameOverMenu.restartButton;
+        Button gameOverQuit = gameOverMenu.quitButton;
+        restart.setOnAction(e -> primaryStage.setScene(gameScene.scene));
+        gameOverQuit.setOnAction(e-> Platform.exit());
 
 
+
+        //Initial stage setup
         primaryStage.setTitle("Space Game");
-        primaryStage.setScene(mainGame);
+        primaryStage.setScene(startMenu.scene);
         primaryStage.setResizable(false);
         primaryStage.show();
-        menuTemplate.display("Main Menu", "Space Game", "Start", this);
+
 
     }
 
-    public void MeteorSpawn(){
-        int numInWave = 1 + rand.nextInt(3);
-        for(int i = 0; i <= numInWave; i++){
-            ImageView meteor = spawner.SpawnWave();
-            mainGameLayout.getChildren().add(meteor);
-        }
+    public void AddNode(Node meteor){
+        gameScene.layout.getChildren().add(meteor);
     }
+
     public void CreateTimer(){
-        GameLogic gameLogic = new GameLogic(this);
+        gameLogic = new GameLogic(gameScene.layout);
     }
 }
 

@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Meteor {
@@ -19,9 +20,11 @@ public class Meteor {
     static Random rand = new Random();
     static TranslateTransition movement;
 
-public ImageView SpawnWave(){
 
-        int xSpawn = rand.nextInt(ScreenSize.getX());
+
+public ImageView Spawn(AnchorPane layout, ArrayList meteors){
+
+        int xSpawn = rand.nextInt(SceneTemplate.sizeX);
         int ySpawn = -1 * rand.nextInt(maxSpawnPosY) - 150;
         int rotationAngle = rand.nextInt(360);
         int radius = minRad + rand.nextInt(maxRad - minRad);
@@ -35,12 +38,18 @@ public ImageView SpawnWave(){
         meteor.setFitWidth(radius * 2);
         meteor.setFitHeight(radius * 2);
 
+        meteors.add(meteor);
+
         movement = new TranslateTransition();
         movement.setNode(meteor);
         movement.setDuration(Duration.seconds(3));
-        movement.setToY(ScreenSize.getY() + 300);
+        movement.setToY(SceneTemplate.sizeY + 300);
+        movement.setOnFinished(e->{
+            layout.getChildren().remove(meteor);
+            meteors.remove(meteor);
+        });
 
-        if(xSpawn < ScreenSize.getX()/2)
+        if(xSpawn < SceneTemplate.sizeY/2)
         {
             movement.setToX(rand.nextInt(60));
         }
@@ -48,9 +57,9 @@ public ImageView SpawnWave(){
         {
             movement.setToX(-120 + rand.nextInt(60));
         }
+        layout.getChildren().add(meteor);
         movement.play();
-        return(meteor);
-
+        return (meteor);
 }
 
 }
