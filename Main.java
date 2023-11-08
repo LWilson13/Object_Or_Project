@@ -26,6 +26,7 @@ public class Main extends Application {
     GameScene gameScene = new GameScene();
     PauseMenu pauseMenu = new PauseMenu();
     GameLogic gameLogic;
+    Player player;
 
     public static void main(String[] args) {
         launch(args);
@@ -54,6 +55,7 @@ public class Main extends Application {
             primaryStage.setScene(pauseMenu.scene);
             gameLogic.Pause();
         });
+        player = new Player(gameScene.layout);
 
         //Pause Menu Button Setup
         Button resumeButton = pauseMenu.resumeButton;
