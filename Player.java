@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 import java.awt.*;
 
 public class Player {
-    private static final double SPACESHIP_SPEED = 5.0;
+    private static final double SPACESHIP_SPEED = 15.0;
     private double spaceshipX = 300;
-    private double spaceshipY = 300;
+    private double spaceshipY = 600;
     private Polygon spaceship;
 
     public Player(AnchorPane layout){

@@ -39,7 +39,8 @@ public class Main extends Application {
         GameOverMenu gameOverMenu = new GameOverMenu();
 
 
-        //Main menu button setup
+        //Main menu setup
+
         Button startButton = startMenu.startButton;
         Button startQuitGame = startMenu.quitButton;
         startButton.setOnAction(e -> {
