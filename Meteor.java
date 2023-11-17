@@ -24,7 +24,10 @@ public class Meteor {
 
 public ImageView Spawn(AnchorPane layout, ArrayList meteors){
 
-        int xSpawn = rand.nextInt(SceneTemplate.sizeX);
+        int pauseButtonIndex = layout.getChildren().indexOf((layout.lookup("#pauseButton")));
+        System.out.println(pauseButtonIndex);
+
+        int xSpawn = rand.nextInt(SceneTemplate.sizeX - 25);
         int ySpawn = -1 * rand.nextInt(maxSpawnPosY) - 150;
         int rotationAngle = rand.nextInt(360);
         int radius = minRad + rand.nextInt(maxRad - minRad);
@@ -57,8 +60,8 @@ public ImageView Spawn(AnchorPane layout, ArrayList meteors){
         {
             movement.setToX(-120 + rand.nextInt(60));
         }
-        layout.getChildren().add(meteor);
         movement.play();
+        layout.getChildren().add(pauseButtonIndex, meteor);
         return (meteor);
 }
 

@@ -1,26 +1,35 @@
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-import java.awt.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 public class GameOverMenu extends SceneTemplate{
 
     Button restartButton = new Button("Restart");
     Button quitButton = new Button("Quit Game");
+    Image gameOverIcon = new Image("src/GAME OVER.png");
+    ImageView gameOver = new ImageView(gameOverIcon);
 
     public GameOverMenu(){
 
+        gameOver.setPreserveRatio(true);
+        gameOver.setFitWidth(sizeX);
 
+        quitButton.setOnAction(e-> Platform.exit());
+
+        //AnchorPane.setLeftAnchor(gameOver, (double)(sizeX / 2));
+        AnchorPane.setTopAnchor(gameOver, -400.0);
         AnchorPane.setLeftAnchor(restartButton, (double)(sizeX / 2 - 27));
         AnchorPane.setTopAnchor(restartButton, (double)(sizeY / 2));
         AnchorPane.setLeftAnchor(quitButton, (sizeX / 2 - 36.5));
         AnchorPane.setTopAnchor(quitButton, (double)(sizeY / 2 + 50));
 
-        layout = new AnchorPane(restartButton, quitButton);
-        layout.setStyle("-fx-background-color: black;");
+        layout.getChildren().addAll(restartButton, quitButton, gameOver);
 
         scene = new Scene(layout, sizeX, sizeY);
     }

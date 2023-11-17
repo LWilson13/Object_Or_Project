@@ -1,40 +1,46 @@
 import javafx.scene.Scene;
 import javafx.scene.Node;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-import java.awt.*;
 
 public class Player {
     private static final double SPACESHIP_SPEED = 15.0;
     private double spaceshipX = 300;
     private double spaceshipY = 600;
-    private Polygon spaceship;
-
+    private Image spaceshipImage = new Image("src/Star Fighter asset 1.png");
+    public ImageView spaceship;
     public Player(AnchorPane layout){
 
         spaceship = createSpaceship();
-        layout.getChildren().add(spaceship);
+        int pauseButtonIndex = layout.getChildren().indexOf((layout.lookup("#pauseButton")));
+        layout.getChildren().add(pauseButtonIndex, spaceship);
 
 
 
         layout.setOnKeyPressed(event -> {
-            switch(event.getCode()){
-                case W:
-                    moveSpaceship(0, -SPACESHIP_SPEED);
-                    break;
-                case A:
-                    moveSpaceship(-SPACESHIP_SPEED, 0);
-                    break;
-                case S:
-                    moveSpaceship(0, SPACESHIP_SPEED);
-                    break;
-                case D:
-                    moveSpaceship(SPACESHIP_SPEED, 0);
-                    break;
+
+            if(event.getCode() == KeyCode.W)
+            {
+                moveSpaceship(0, -SPACESHIP_SPEED);
+            }
+            else if (event.getCode() == KeyCode.S)
+            {
+                moveSpaceship(0, SPACESHIP_SPEED);
+            }
+            if(event.getCode() == KeyCode.A)
+            {
+                moveSpaceship(-SPACESHIP_SPEED, 0);
+            }
+            else if (event.getCode() == KeyCode.D)
+            {
+                moveSpaceship(SPACESHIP_SPEED, 0);
             }
         });
     }
@@ -49,18 +55,13 @@ public class Player {
         AnchorPane layout = (AnchorPane) spaceship.getParent();
         layout.getChildren().remove(spaceship);
 
-        Polygon newSpaceship = createSpaceship();
+        ImageView newSpaceship = createSpaceship();
         layout.getChildren().add(newSpaceship);
     }
 
-    private Polygon createSpaceship(){
-    spaceship = new Polygon(
-                0, -20,
-                        -10, 10,
-                        10, 10
-    );
+    private ImageView createSpaceship(){
+    spaceship = new ImageView(spaceshipImage);
 
-        spaceship.setFill(Color.LIGHTGRAY);
         spaceship.setTranslateX(spaceshipX);
         spaceship.setTranslateY(spaceshipY);
         return spaceship;
