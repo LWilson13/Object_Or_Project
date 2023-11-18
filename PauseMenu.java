@@ -8,10 +8,14 @@ import javafx.stage.Stage;
 
 public class PauseMenu extends SceneTemplate {
 
-    Button resumeButton = new Button("Resume");
+    Button resumeButton = new Button("");
     Button quitButton = new Button();
     Image exitImage = new Image("src/EXIT.png");
     ImageView exit = new ImageView(exitImage);
+    Image resumeImage = new Image("src/Resume.png");
+    ImageView resume = new ImageView(resumeImage);
+
+
 
     public PauseMenu(Stage stage, GameScene gameScene) {
 
@@ -20,8 +24,11 @@ public class PauseMenu extends SceneTemplate {
 
         exit.setFitWidth(48);
         exit.setFitHeight(18);
+        resume.setFitWidth(48);
+        resume.setFitHeight(18);
 
         quitButton.setGraphic(exit);
+        resumeButton.setGraphic(resume);
 
         AnchorPane.setLeftAnchor(resumeButton, (double) (sizeX / 2 - 27));
         AnchorPane.setTopAnchor(resumeButton, (double) (sizeY / 2));

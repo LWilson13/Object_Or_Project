@@ -10,16 +10,20 @@ import javafx.scene.image.Image;
 
 public class GameOverMenu extends SceneTemplate{
 
-    Button restartButton = new Button("Restart");
-    Button quitButton = new Button("Quit Game");
+    Button restartButton = new Button("");
+    Button quitButton = new Button("");
     Image gameOverIcon = new Image("src/GAME OVER.png");
     ImageView gameOver = new ImageView(gameOverIcon);
-
+    Image exitImage = new Image("src/EXIT.png");
+    ImageView exit = new ImageView(exitImage);
+    Image restartImage = new Image("src/Restart.png");
+    ImageView restart = new ImageView(restartImage);
     public GameOverMenu(){
 
         gameOver.setPreserveRatio(true);
         gameOver.setFitWidth(sizeX);
-
+        quitButton.setGraphic(exit);
+        restartButton.setGraphic(restart);
         quitButton.setOnAction(e-> Platform.exit());
 
         //AnchorPane.setLeftAnchor(gameOver, (double)(sizeX / 2));

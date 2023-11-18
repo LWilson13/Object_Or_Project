@@ -31,7 +31,7 @@ public ImageView Spawn(AnchorPane layout, ArrayList meteors){
         int ySpawn = -1 * rand.nextInt(maxSpawnPosY) - 150;
         int rotationAngle = rand.nextInt(360);
         int radius = minRad + rand.nextInt(maxRad - minRad);
-        Image meteorImage = new Image("src/Asteroid_big.png");
+        Image meteorImage = new Image("src/Asteroid big.png");
         ImageView meteor = new ImageView(meteorImage);
 
         meteor.setX(xSpawn);
