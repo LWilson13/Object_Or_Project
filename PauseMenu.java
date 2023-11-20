@@ -24,8 +24,8 @@ public class PauseMenu extends SceneTemplate {
 
         exit.setFitWidth(48);
         exit.setFitHeight(18);
-        resume.setFitWidth(48);
-        resume.setFitHeight(18);
+        resume.setFitWidth(64);
+        resume.setFitHeight(22);
 
         quitButton.setGraphic(exit);
         resumeButton.setGraphic(resume);
