@@ -28,10 +28,10 @@ public class GameOverMenu extends SceneTemplate{
 
         //AnchorPane.setLeftAnchor(gameOver, (double)(sizeX / 2));
         AnchorPane.setTopAnchor(gameOver, -400.0);
-        AnchorPane.setLeftAnchor(restartButton, (double)(sizeX / 2 - 27));
+        AnchorPane.setLeftAnchor(restartButton, (double)(sizeX / 2 - 47));
         AnchorPane.setTopAnchor(restartButton, (double)(sizeY / 2));
-        AnchorPane.setLeftAnchor(quitButton, (sizeX / 2 - 36.5));
-        AnchorPane.setTopAnchor(quitButton, (double)(sizeY / 2 + 50));
+        AnchorPane.setLeftAnchor(quitButton, (sizeX / 2 - 32.5));
+        AnchorPane.setTopAnchor(quitButton, (double)(sizeY / 2 + 40));
 
         layout.getChildren().addAll(restartButton, quitButton, gameOver);
 

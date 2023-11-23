@@ -30,10 +30,10 @@ public class PauseMenu extends SceneTemplate {
         quitButton.setGraphic(exit);
         resumeButton.setGraphic(resume);
 
-        AnchorPane.setLeftAnchor(resumeButton, (double) (sizeX / 2 - 27));
+        AnchorPane.setLeftAnchor(resumeButton, (double) (sizeX / 2 - 40));
         AnchorPane.setTopAnchor(resumeButton, (double) (sizeY / 2));
-        AnchorPane.setLeftAnchor(quitButton, (sizeX / 2 - 30.5));
-        AnchorPane.setTopAnchor(quitButton, (double) (sizeY / 2 + 50));
+        AnchorPane.setLeftAnchor(quitButton, (sizeX / 2 - 32.5));
+        AnchorPane.setTopAnchor(quitButton, (double) (sizeY / 2 + 40));
 
         layout.getChildren().addAll(resumeButton, quitButton);
         layout.setStyle("-fx-background-color: black;");

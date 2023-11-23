@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 
 public class Player {
     private static final double SPACESHIP_SPEED = 15.0;
-    private double spaceshipX = 300;
+    private double spaceshipX = 360;
     private double spaceshipY = 600;
     private Image spaceshipImage = new Image("src/Star Fighter asset 1.png");
     public ImageView spaceship;
