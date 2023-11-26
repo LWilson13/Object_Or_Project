@@ -11,11 +11,14 @@ public class StartMenu extends SceneTemplate{
     Button startButton = new Button();
     Button quitButton = new Button();
     GameScene gameScene;
+    GameOverMenu gameOverMenu;
 
 
 
 
     public StartMenu(Stage stage){
+
+        gameOverMenu = new GameOverMenu(stage,this);
 
 
         Image logoImage = new Image("src/ASTEROID GRAVEYARD logo color.png");
@@ -38,13 +41,12 @@ public class StartMenu extends SceneTemplate{
 
         startButton.setGraphic(start);
         startButton.setOnAction(e->{
-            gameScene = new GameScene(stage);
+            gameScene = new GameScene(stage, this);
             stage.setScene(gameScene.scene);
         });
 
         quitButton.setGraphic(exit);
         quitButton.setOnAction(e-> Platform.exit());
-
 
         AnchorPane.setLeftAnchor(logo, (double)(sizeX / 2 - 300));
         AnchorPane.setTopAnchor(logo, (double)(sizeY / 80 - 200));
@@ -57,5 +59,11 @@ public class StartMenu extends SceneTemplate{
         layout.setStyle("-fx-background-color: black;");
 
         scene = new Scene(layout, sizeX, sizeY);
+    }
+
+    public void deleteGameScene(Stage stage){
+        stage.setScene(gameOverMenu.scene);
+        gameScene.deleteLogic();
+        gameScene = null;
     }
 }
